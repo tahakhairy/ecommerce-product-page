@@ -1,0 +1,54 @@
+/* color palette */
+:root {
+  --color-orange: #ff7d1a;
+  --color-orange-pale: rgb(255, 237, 224);
+  --color-neutral-dark-blue: #1d2025;
+  --color-neutral-dark-grayish-blue: #68707d;
+  --color-neutral-grayish-blue: #b6bcc8;
+  --color-neutral-light-grayish-blue: #f7f8fd;
+  --color-black: #000;
+  --color-white: #fff
+}
+
+/* semantic colors for this project */
+:root {
+  --color-primary: var(--color-orange);
+  --color-primary-pale: var(--color-orange-pale)
+  --color-background: var(--color-white);
+  --color-border: var(--color-neutral-light-grayish-blue);
+  --color-text: var(--color-neutral-dark-grayish-blue);
+  --color-heading: var(--color-black);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  font-family: "Kumbh Sans", sans-serif;
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-heading);
+}
+
+a {
+  text-decoration: none;
+}
+
+a:active {
+  color: #000;
+}
