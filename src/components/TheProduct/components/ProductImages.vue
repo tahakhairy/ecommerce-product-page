@@ -2,36 +2,26 @@
   <div class="images">
     <img
       class="original"
-      :src="images[0].original"
-      :alt="`image ${images.indexOf(images[0])}`"
+      :src="selectedImage.original"
+      :alt="`image ${selectedImage.id}`"
     />
 
-    <ProductThumbnail :images="images" />
-    <!-- <img
-      class="thumbnail"
-      src="/src/assets/images/image-product-2-thumbnail.jpg"
-      alt=""
-    />
-    <img
-      class="thumbnail"
-      src="/src/assets/images/image-product-3-thumbnail.jpg"
-      alt=""
-    />
-    <img
-      class="thumbnail"
-      src="/src/assets/images/image-product-4-thumbnail.jpg"
-      alt=""
-    /> -->
+    <ProductThumbnail :images="images" @send-image="changeImage" />
   </div>
 </template>
 
 <script setup>
-import { toRefs } from "vue";
+import { ref } from "vue";
 import ProductThumbnail from "./ProductThumbnail.vue";
-const props = defineProps(["images"]);
 
+const props = defineProps(["images"]);
 const images = props.images;
-console.log(images);
+
+const selectedImage = ref(images[0]);
+
+const changeImage = (emittedImage) => {
+  selectedImage.value = images.find((image) => image.id === emittedImage.id);
+};
 </script>
 
 <style lang="scss" scoped>
@@ -39,8 +29,7 @@ console.log(images);
   width: 370px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.6rem;
-  // grid-template-rows: 3fr 1fr;
+  gap: 1.8rem;
 
   .original {
     width: 100%;

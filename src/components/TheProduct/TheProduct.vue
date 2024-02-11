@@ -14,8 +14,6 @@ const response = await fetch("/src/data/product.json");
 const { product } = await response.json();
 
 const productImages = ref(product.images);
-
-console.log(productImages.value);
 </script>
 
 <style lang="scss" scoped>

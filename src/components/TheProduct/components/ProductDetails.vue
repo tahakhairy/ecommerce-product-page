@@ -12,13 +12,13 @@
     <span class="original-price">${{ product.original_price }}.00</span>
     <div class="btns">
       <div class="quantity-btn btn">
-        <span>-</span>
-        <span>0</span>
-        <span>+</span>
+        <button @click="quantity != 0 ? quantity-- : (quantity = 0)">-</button>
+        <span>{{ quantity }}</span>
+        <button @click="quantity++">+</button>
       </div>
 
       <div class="add-btn btn">
-        <IconCart></IconCart>
+        <IconCart :style="iconStyle"></IconCart>
         <span>Add to Cart</span>
       </div>
     </div>
@@ -27,11 +27,14 @@
 
 <script setup>
 import IconCart from "@/components/icons/IconCart.vue";
-import { toRefs } from "vue";
+import { toRefs, ref } from "vue";
 const props = defineProps(["product"]);
 
 const product = props.product;
-console.log(product);
+
+const iconStyle = ref({ fill: "var(--color-white)" });
+
+const quantity = ref(0);
 </script>
 
 <style lang="scss" scoped>
@@ -101,16 +104,23 @@ console.log(product);
     .quantity-btn {
       width: 35%;
       background-color: var(--color-border);
-
       justify-content: space-between;
 
       span:nth-child(2) {
         color: var(--color-black);
       }
-      span:first-child,
-      span:last-child {
+
+      button:first-child,
+      button:last-child {
         color: var(--color-primary);
         font-size: 1.7rem;
+        border: none;
+        background-color: var(--color-border);
+        font-weight: bold;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
 
@@ -123,6 +133,10 @@ console.log(product);
 
       span {
         margin-left: 1rem;
+      }
+
+      &:hover {
+        cursor: pointer;
       }
     }
   }
