@@ -20,13 +20,13 @@ const images = props.images;
 const selectedImage = ref(images[0]);
 
 const changeImage = (emittedImage) => {
-  selectedImage.value = images.find((image) => image.id === emittedImage.id);
+  selectedImage.value = images.find((image) => image.id === emittedImage.id);  
 };
 </script>
 
 <style lang="scss" scoped>
 .images {
-  width: 370px;
+  width: 400px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.8rem;

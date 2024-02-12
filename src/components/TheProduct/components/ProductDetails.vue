@@ -40,7 +40,7 @@ const quantity = ref(0);
 <style lang="scss" scoped>
 .product-details {
   width: 50%;
-  padding: 2rem;
+  padding: 3rem;
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -59,7 +59,7 @@ const quantity = ref(0);
   }
 
   p {
-    line-height: 1.5;
+    line-height: 1.7;
     margin: 1rem 0;
     background-color: var(--color-primary-pale);
   }

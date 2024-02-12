@@ -39,9 +39,13 @@ ul {
       }
     }
 
-    a:hover {
-      color: var(--color-black);
-      cursor: pointer;
+    a {
+
+      
+      &:hover {
+        color: var(--color-black);
+        cursor: pointer;
+      }
     }
   }
 }
