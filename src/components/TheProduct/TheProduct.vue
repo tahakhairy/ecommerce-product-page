@@ -1,6 +1,8 @@
 <template>
   <main class="content">
-    <ProductImages :images="productImages"></ProductImages>
+    <Suspense>
+      <ProductImages></ProductImages>
+    </Suspense>
     <ProductDetails :product="product"></ProductDetails>
   </main>
 </template>
