@@ -5,19 +5,21 @@
     <p>{{ product.description }}</p>
     <div class="discount-price">
       <h2>${{ product.discounted_price }}.00</h2>
-      <span
+      <span class="discount"
         >{{ (product.discounted_price / product.original_price) * 100 }}%</span
       >
     </div>
     <span class="original-price">${{ product.original_price }}.00</span>
     <div class="btns">
       <div class="quantity-btn btn">
-        <button @click="quantity != 0 ? quantity-- : (quantity = 0)">-</button>
+        <button @click="quantity != 0 ? quantity-- : (quantity = 0)">
+          <IconMinus />
+        </button>
         <span>{{ quantity }}</span>
-        <button @click="quantity++">+</button>
+        <button @click="quantity++"><IconPlus /></button>
       </div>
 
-      <div class="add-btn btn">
+      <div class="add-btn btn" @click="addToCart">
         <IconCart :style="iconStyle"></IconCart>
         <span>Add to Cart</span>
       </div>
@@ -27,7 +29,13 @@
 
 <script setup>
 import IconCart from "@/components/icons/IconCart.vue";
+import IconPlus from "@/components/icons/IconPlus.vue";
+import IconMinus from "@/components/icons/IconMinus.vue";
 import { toRefs, ref } from "vue";
+import { useCartStore } from "@/stores/cart";
+
+const cartStore = useCartStore();
+
 const props = defineProps(["product"]);
 
 const product = props.product;
@@ -35,6 +43,13 @@ const product = props.product;
 const iconStyle = ref({ fill: "var(--color-white)" });
 
 const quantity = ref(0);
+
+const addToCart = () => {
+  if (quantity.value) {
+    cartStore.quantity = quantity.value;
+    quantity.value = 0;
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -73,7 +88,7 @@ const quantity = ref(0);
       margin: 0.5rem 0;
     }
 
-    span {
+    .discount {
       padding: 0.2rem 0.5rem;
       background-color: var(--color-primary-pale);
       color: var(--color-primary);
@@ -105,6 +120,7 @@ const quantity = ref(0);
       width: 35%;
       background-color: var(--color-border);
       justify-content: space-between;
+      align-items: center;
 
       span:nth-child(2) {
         color: var(--color-black);

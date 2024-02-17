@@ -1,6 +1,14 @@
 <template>
   <div class="controls">
-    <span class="icon">
+    <span
+      v-if="store.quantity > 0"
+      class="icon"
+      @click="store.toggleCart"
+      :data-before-content="store.quantity"
+    >
+      <IconCart />
+    </span>
+    <span v-else class="empty-cart-icon" @click="store.toggleCart">
       <IconCart />
     </span>
 
@@ -10,6 +18,9 @@
 
 <script setup>
 import IconCart from "@/components/icons/IconCart.vue";
+import { useCartStore } from "@/stores/cart";
+
+const store = useCartStore();
 </script>
 
 <style lang="scss" scoped>
@@ -33,23 +44,36 @@ import IconCart from "@/components/icons/IconCart.vue";
     }
   }
 
+  .empty-cart-icon {
+    margin-right: 3rem;
+    position: relative;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
   .icon {
     margin-right: 3rem;
     position: relative;
-  }
-  .icon::before {
-    content: "2";
-    position: absolute;
-    width: 80%;
-    color: white;
-    background-color: var(--color-primary);
-    height: 50%;
-    border-radius: 6px;
-    font-size: 9px;
-    text-align: center;
-    font-weight: bold;
-    left: 40%;
-    top: -20%;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &::before {
+      content: attr(data-before-content);
+      position: absolute;
+      width: 80%;
+      color: white;
+      background-color: var(--color-primary);
+      height: 50%;
+      border-radius: 6px;
+      font-size: 9px;
+      text-align: center;
+      font-weight: bold;
+      left: 40%;
+      top: -20%;
+    }
   }
 }
 </style>

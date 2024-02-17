@@ -1,6 +1,7 @@
 <template>
   <div class="images">
     <img
+      @click="modalStore.openModal"
       class="original"
       :src="selectedImage.original"
       :alt="`image ${selectedImage.id}`"
@@ -13,15 +14,15 @@
 <script setup>
 import { ref } from "vue";
 import ProductThumbnail from "./ProductThumbnail.vue";
+import { useModalStore } from "@/stores/modal";
+import { useProductStore } from "@/stores/product";
 
+const modalStore = useModalStore();
 const response = await fetch("/src/data/product.json");
 
 const { product } = await response.json();
 
 const productImages = ref(product.images);
-
-// const props = defineProps(["images"]);
-// const images = props.images;
 
 const selectedImage = ref(productImages.value[0]);
 
@@ -43,6 +44,7 @@ const changeImage = (emittedImage) => {
     width: 100%;
     grid-column: 1 / span 4;
     border-radius: 1rem;
+    cursor: pointer;
   }
 }
 </style>

@@ -33,6 +33,7 @@ const sendActiveImage = (image) => {
   overflow: hidden;
   display: flex;
   cursor: pointer;
+  background-color: white;
 
   img {
     width: 100%;
@@ -40,6 +41,10 @@ const sendActiveImage = (image) => {
 
     &.active {
       opacity: 0.3;
+    }
+
+    &:hover {
+      opacity: 0.6;
     }
   }
 }
