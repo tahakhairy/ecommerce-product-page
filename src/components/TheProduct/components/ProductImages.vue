@@ -6,7 +6,7 @@
       :alt="`image ${selectedImage.id}`"
     />
 
-    <ProductThumbnail :images="images" @send-image="changeImage" />
+    <ProductThumbnail :images="productImages" @send-image="changeImage" />
   </div>
 </template>
 
@@ -14,13 +14,21 @@
 import { ref } from "vue";
 import ProductThumbnail from "./ProductThumbnail.vue";
 
-const props = defineProps(["images"]);
-const images = props.images;
+const response = await fetch("/src/data/product.json");
 
-const selectedImage = ref(images[0]);
+const { product } = await response.json();
+
+const productImages = ref(product.images);
+
+// const props = defineProps(["images"]);
+// const images = props.images;
+
+const selectedImage = ref(productImages.value[0]);
 
 const changeImage = (emittedImage) => {
-  selectedImage.value = images.find((image) => image.id === emittedImage.id);
+  selectedImage.value = productImages.value.find(
+    (image) => image.id === emittedImage.id
+  );
 };
 </script>
 

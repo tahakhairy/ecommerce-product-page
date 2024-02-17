@@ -6,11 +6,14 @@
       <TheProduct></TheProduct>
     </Suspense>
   </div>
+
+  <!-- <Modal></Modal> -->
 </template>
 
 <script setup>
 import TheNavbar from "./components/TheNavbar/TheNavbar.vue";
 import TheProduct from "./components/TheProduct/TheProduct.vue";
+import Modal from "@/components/Modal.vue";
 </script>
 
 <style lang="scss" scoped>
