@@ -8,7 +8,8 @@ export const useProductStore = defineStore("product", () => {
     const response = await fetch("/src/data/product.json");
     const data = await response.json();
     product.value = data.product;
-    console.log(product.value);
+    // console.log(product.value);
+    return product.value;
   };
 
   return { product, getData };

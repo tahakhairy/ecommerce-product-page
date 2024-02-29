@@ -154,6 +154,10 @@ const addToCart = () => {
       &:hover {
         cursor: pointer;
       }
+
+      &:active {
+        background-color: lighten(#ff7d1a, 20%);
+      }
     }
   }
 }

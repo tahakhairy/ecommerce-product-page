@@ -16,11 +16,15 @@ import { ref } from "vue";
 import ProductThumbnail from "./ProductThumbnail.vue";
 import { useModalStore } from "@/stores/modal";
 import { useProductStore } from "@/stores/product";
+import { storeToRefs } from "pinia";
 
 const modalStore = useModalStore();
-const response = await fetch("/src/data/product.json");
+const productStore = useProductStore();
+// const response = await fetch("/src/data/product.json");
 
-const { product } = await response.json();
+// const { product } = await response.json();
+
+const product = await productStore.getData();
 
 const productImages = ref(product.images);
 
