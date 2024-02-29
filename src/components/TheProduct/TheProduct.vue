@@ -1,7 +1,7 @@
 <template>
   <main class="content">
     <Suspense>
-      <ProductImages></ProductImages>
+      <ProductImages @imageId=""></ProductImages>
     </Suspense>
     <ProductDetails :product="product"></ProductDetails>
   </main>
@@ -11,10 +11,15 @@
 import { ref } from "vue";
 import ProductImages from "./components/ProductImages.vue";
 import ProductDetails from "./components/ProductDetails.vue";
-const response = await fetch("/src/data/product.json");
+import { useProductStore } from "@/stores/product";
 
-const { product } = await response.json();
+// const response = await fetch("/src/data/product.json");
+// const { product } = await response.json();
 
+const store = useProductStore();
+
+const product = await store.getData();
+console.log(product);
 const productImages = ref(product.images);
 </script>
 

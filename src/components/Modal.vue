@@ -1,11 +1,14 @@
 <template>
   <div class="modal">
     <div class="content">
-      <span class="pre"><IconPrevious /></span>
-      <span class="next"><IconNext /></span>
+      <button class="pre" @click="nextImage"><IconPrevious /></button>
+      <button class="next" @click="doSomething"><IconNext /></button>
       <IconClose class="close-icn" @click="modalStore.closeModal" />
       <Suspense>
-        <ProductImages @current-image="imageId"></ProductImages>
+        <ProductImages
+          @imageId="(id) => (currentImageId = id)"
+          :nextId="nextId"
+        />
       </Suspense>
     </div>
   </div>
@@ -18,22 +21,15 @@ import IconClose from "./icons/IconClose.vue";
 import IconPrevious from "./icons/IconPrevious.vue";
 import IconNext from "./icons/IconNext.vue";
 import { useModalStore } from "@/stores/modal";
-import { useProductStore } from "@/stores/product";
-import { storeToRefs } from "pinia";
 
 const modalStore = useModalStore();
-const productStore = useProductStore();
 
-const { product } = storeToRefs(productStore);
-const currentImage = ref(null);
-const images = ref(product.value.images);
-
-const imageId = (value) => {
-  currentImage.value = value;
-  console.log(currentImage.value);
+const currentImageId = ref(1);
+const nextId = ref(null);
+const nextImage = () => {
+  currentImageId.value++;
+  nextId.value = currentImageId.value;
 };
-// console.log(images.value);
-// console.log(product);
 </script>
 
 <style lang="scss" scoped>
@@ -48,7 +44,7 @@ const imageId = (value) => {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 999;
 
   .content {
     display: flex;

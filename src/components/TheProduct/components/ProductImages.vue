@@ -16,24 +16,22 @@ import { ref } from "vue";
 import ProductThumbnail from "./ProductThumbnail.vue";
 import { useModalStore } from "@/stores/modal";
 import { useProductStore } from "@/stores/product";
-import { storeToRefs } from "pinia";
 
 const modalStore = useModalStore();
 const productStore = useProductStore();
-// const response = await fetch("/src/data/product.json");
-
-// const { product } = await response.json();
-
 const product = await productStore.getData();
-
 const productImages = ref(product.images);
 
 const selectedImage = ref(productImages.value[0]);
 
+const emits = defineEmits(["imageId"]);
+emits("imageId", selectedImage.value.id);
+const props = defineProps(["nextId"]);
 const changeImage = (emittedImage) => {
   selectedImage.value = productImages.value.find(
     (image) => image.id === emittedImage.id
   );
+  emits("imageId", selectedImage.value.id);
 };
 </script>
 

@@ -20,6 +20,7 @@ const props = defineProps(["images"]);
 const emit = defineEmits(["sendImage"]);
 
 const activeImage = ref(props.images[0]);
+
 const sendActiveImage = (image) => {
   activeImage.value = image;
   emit("sendImage", image);
