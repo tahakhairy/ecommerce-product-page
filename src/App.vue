@@ -5,7 +5,7 @@
     <TheNavbar />
 
     <Suspense>
-      <TheProduct></TheProduct>
+      <TheProduct />
     </Suspense>
   </div>
 

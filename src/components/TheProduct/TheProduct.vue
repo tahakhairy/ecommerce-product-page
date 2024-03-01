@@ -1,9 +1,7 @@
 <template>
   <main class="content">
-    <Suspense>
-      <ProductImages @imageId=""></ProductImages>
-    </Suspense>
-    <ProductDetails :product="product"></ProductDetails>
+    <ProductImages @imageId="" />
+    <ProductDetails :product="product" />
   </main>
 </template>
 
@@ -12,15 +10,11 @@ import { ref } from "vue";
 import ProductImages from "./components/ProductImages.vue";
 import ProductDetails from "./components/ProductDetails.vue";
 import { useProductStore } from "@/stores/product";
-
-// const response = await fetch("/src/data/product.json");
-// const { product } = await response.json();
+import { storeToRefs } from "pinia";
 
 const store = useProductStore();
-
-const product = await store.getData();
-console.log(product);
-const productImages = ref(product.images);
+await store.getData();
+const { product } = storeToRefs(store);
 </script>
 
 <style lang="scss" scoped>

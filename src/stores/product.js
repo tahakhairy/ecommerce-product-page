@@ -1,14 +1,13 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
+import { fetchProductData } from "@/service/productService";
 
 export const useProductStore = defineStore("product", () => {
   const product = ref(null);
 
   const getData = async () => {
-    const response = await fetch("/src/data/product.json");
-    const data = await response.json();
-    product.value = data.product;
-    return product.value;
+    const data = await fetchProductData();
+    product.value = data;
   };
 
   return { product, getData };

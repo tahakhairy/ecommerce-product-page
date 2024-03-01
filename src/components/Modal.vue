@@ -4,12 +4,11 @@
       <button class="pre" @click="nextImage"><IconPrevious /></button>
       <button class="next" @click="doSomething"><IconNext /></button>
       <IconClose class="close-icn" @click="modalStore.closeModal" />
-      <Suspense>
-        <ProductImages
-          @imageId="(id) => (currentImageId = id)"
-          :nextId="nextId"
-        />
-      </Suspense>
+
+      <ProductImages
+        @imageId="(id) => (currentImageId = id)"
+        :nextId="nextId"
+      />
     </div>
   </div>
 </template>
