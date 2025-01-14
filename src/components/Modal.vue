@@ -14,21 +14,21 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import ProductImages from "./TheProduct/components/ProductImages.vue";
-import IconClose from "./icons/IconClose.vue";
-import IconPrevious from "./icons/IconPrevious.vue";
-import IconNext from "./icons/IconNext.vue";
-import { useModalStore } from "@/stores/modal";
+import { ref } from 'vue'
+import ProductImages from './TheProduct/components/ProductImages.vue'
+import IconClose from './icons/IconClose.vue'
+import IconPrevious from './icons/IconPrevious.vue'
+import IconNext from './icons/IconNext.vue'
+import { useModalStore } from '@/stores/modal'
 
-const modalStore = useModalStore();
+const modalStore = useModalStore()
 
-const currentImageId = ref(1);
-const nextId = ref(null);
+const currentImageId = ref(1)
+const nextId = ref(null)
 const nextImage = () => {
-  currentImageId.value++;
-  nextId.value = currentImageId.value;
-};
+  currentImageId.value++
+  nextId.value = currentImageId.value
+}
 </script>
 
 <style lang="scss" scoped>

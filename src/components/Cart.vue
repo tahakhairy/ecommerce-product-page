@@ -28,10 +28,10 @@
 </template>
 
 <script setup>
-import IconDelete from "./icons/IconDelete.vue";
-import { useCartStore } from "@/stores/cart";
+import IconDelete from './icons/IconDelete.vue'
+import { useCartStore } from '@/stores/cart'
 
-const store = useCartStore();
+const store = useCartStore()
 </script>
 
 <style lang="scss" scoped>

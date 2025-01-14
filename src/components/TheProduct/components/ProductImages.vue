@@ -12,28 +12,28 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import ProductThumbnail from "./ProductThumbnail.vue";
-import { useModalStore } from "@/stores/modal";
-import { useProductStore } from "@/stores/product";
-import { storeToRefs } from "pinia";
-const modalStore = useModalStore();
-const productStore = useProductStore();
+import { ref } from 'vue'
+import ProductThumbnail from './ProductThumbnail.vue'
+import { useModalStore } from '@/stores/modal'
+import { useProductStore } from '@/stores/product'
+import { storeToRefs } from 'pinia'
+const modalStore = useModalStore()
+const productStore = useProductStore()
 
-const { product } = storeToRefs(productStore);
-const productImages = ref(product.value.images);
+const { product } = storeToRefs(productStore)
+const productImages = ref(product.value.images)
 
-const selectedImage = ref(productImages.value[0]);
+const selectedImage = ref(productImages.value[0])
 
-const emits = defineEmits(["imageId"]);
-emits("imageId", selectedImage.value.id);
-const props = defineProps(["nextId"]);
+const emits = defineEmits(['imageId'])
+emits('imageId', selectedImage.value.id)
+const props = defineProps(['nextId'])
 const changeImage = (emittedImage) => {
   selectedImage.value = productImages.value.find(
     (image) => image.id === emittedImage.id
-  );
-  emits("imageId", selectedImage.value.id);
-};
+  )
+  emits('imageId', selectedImage.value.id)
+}
 </script>
 
 <style lang="scss" scoped>

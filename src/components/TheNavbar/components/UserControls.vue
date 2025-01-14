@@ -12,15 +12,15 @@
       <IconCart />
     </span>
 
-    <img src="/src/assets/images/image-avatar.png" alt="avatar-pic" />
+    <img src="images/image-avatar.png" alt="avatar-pic" />
   </div>
 </template>
 
 <script setup>
-import IconCart from "@/components/icons/IconCart.vue";
-import { useCartStore } from "@/stores/cart";
+import IconCart from '@/components/icons/IconCart.vue'
+import { useCartStore } from '@/stores/cart'
 
-const store = useCartStore();
+const store = useCartStore()
 </script>
 
 <style lang="scss" scoped>
