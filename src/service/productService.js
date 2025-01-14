@@ -1,6 +1,6 @@
 export async function fetchProductData() {
   try {
-    const response = await fetch("/src/data/product.json");
+    const response = await fetch("/public/product.json");
     if (!response.ok) {
       throw new Error("Failed to fetch data");
     }
