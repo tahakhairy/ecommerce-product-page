@@ -12,7 +12,7 @@
       <IconCart />
     </span>
 
-    <img src="images/image-avatar.png" alt="avatar-pic" />
+    <img src="/images/image-avatar.png" alt="avatar-pic" />
   </div>
 </template>
 
