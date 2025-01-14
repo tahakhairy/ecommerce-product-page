@@ -1,4 +1,6 @@
-# fem-challenge-7
+# E-commerce Product Page
+
+![Screenshot 2025-01-14 173535](https://github.com/user-attachments/assets/a71f7a8c-bd96-4b8d-b4e9-b22021e19b5a)
 
 This template should help get you started developing with Vue 3 in Vite.
 
