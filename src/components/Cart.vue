@@ -8,7 +8,7 @@
       <h4 v-if="store.quantity === 0">Your cart is empty.</h4>
       <div v-else class="full">
         <div class="item">
-          <img src="../assets//images/image-product-1-thumbnail.jpg" alt="" />
+          <img src="/images/image-product-1-thumbnail.jpg" alt="" />
           <div class="details">
             <p>Fall Limited Edition Sneakers</p>
             <div>
